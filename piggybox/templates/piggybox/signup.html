@@ -1,0 +1,22 @@
+{% extends "piggybox/base_generic.html" %}
+
+{% block content %}
+<p style="color:var(--main-color-dark)">piggybox</p>
+<div class="form">
+  <p class="font-M">Sign Up</p>
+  {% if not next %}
+    <p class="text-danger">パスワードが短過ぎるか、一致していません。</p>
+  {% endif %}
+  <form action="" method="post">
+    {% csrf_token %}
+    {{ form.username }}
+    {{ form.email }}
+    {{ form.password1 }}
+    {{ form.password2 }}
+    <input type="submit" value="新規登録" class="btn -M" >
+    <input type="hidden" name="next" value="{{ next }}" />
+  </form>
+  <p>既に登録されている方は<a href="{% url 'login' %}">こちら</a></p>
+</div>
+
+{% endblock %}

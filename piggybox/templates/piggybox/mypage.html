@@ -1,0 +1,49 @@
+{% extends 'piggybox/base_generic.html' %}
+{% load humanize %}
+{% block content %}
+<style>
+  #Wishlist{
+    margin: 0 auto;
+    overflow-x: auto;
+    white-space: nowrap;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  #Wishlist ul{
+    display: inline-block;
+    margin: 0 2vw;
+  }
+
+  #Wishlist ul li {
+    width: 33vw;
+  }
+
+  #Wishlist ul li img {
+    width: 100%;
+  }
+</style>
+<h1 class="font-M color-midlight">MYPAGE</h1>
+
+{% if wishlist_list %}
+<div id="Wishlist">
+  {% for wish in wishlist_list %}
+    <ul>
+      <li>
+        <h2>{{ wish.name }}</h2>
+        {% if wish.image %}
+        <img src="{{ IMAGE_URL }}{{ wish.image.url }}">
+        {% endif %}
+        <h1>¥{{ wish.price |intcomma }}</h1>
+        <p>目標達成まで {{ wish.goal_days |intcomma }} 日！</p>
+        <p>1日あたり¥{{ wish.goal_per_day |intcomma}}を貯金</p>
+        <p>1週間あたり¥{{ wish.goal_per_week |intcomma}}を貯金</p>
+        <p>1ヶ月あたり¥{{ wish.goal_per_month |intcomma}}を貯金</p>
+      </li>
+    </ul>
+  {% endfor %}
+</div>
+
+{% else %}
+<p>まだ欲しいものが登録されていません。</p>
+{% endif %}
+{% endblock %}

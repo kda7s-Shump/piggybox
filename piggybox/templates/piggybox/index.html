@@ -1,0 +1,20 @@
+{% extends 'piggybox/base_generic.html' %}
+{% load static %}
+
+{% block header %}{% endblock %}
+
+{% block content %}
+<p class="font-L" style="color:var(--main-color-dark)">piggybox</p>
+<img src="{% static 'img/Savings-pana.png' %}" alt="piggybox" style="width: 60vw;">
+<h1>What for do you save money?</h1>
+<p>あなたの貯金を管理する最もシンプルな方法。</p>
+<p>あなたの欲しいものは何ですか？</p>
+<a class="btn -M"
+  {% if user.is_authenticated %}
+    href="{% url 'piggybox:mypage' %}"
+  {% else %}
+    href="{% url 'piggybox:signup' %}"
+  {% endif %}>
+  <h2>貯金箱を作る</h2>
+</a>
+{% endblock %}

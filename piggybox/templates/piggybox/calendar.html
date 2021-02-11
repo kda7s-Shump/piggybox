@@ -1,0 +1,147 @@
+{% extends 'piggybox/base_generic.html' %}
+{% block content %}
+<style>
+  #calendar {
+    height: 50vh;
+    margin: 5vh auto;
+    overflow: auto;
+  }
+
+  .arrow {
+    display: inline-block;
+    padding: 0 1rem;
+    position: relative;
+    vertical-align: middle;
+  }
+
+  .arrow::before,
+  .arrow::after {
+    bottom: 0;
+    box-sizing: border-box;
+    content: "";
+    left: 0;
+    margin: auto;
+    position: absolute;
+    top: 0;
+    vertical-align: middle;
+  }
+
+  .arrow::before {
+    width: 2rem;
+    height: 2rem;
+    border: .1rem solid var(--sub-color);
+    -webkit-border-radius: 50%;
+    border-radius: 50%;
+  }
+
+  .arrow::after {
+    border: .75rem solid transparent;
+    height: .7vw;
+    width: .7vw;
+  }
+
+  .arrow-left::after {
+    border-right: .7rem solid var(--sub-color);
+    left: -.2rem;
+  }
+
+  .arrow-right::after {
+    border-left: .7rem solid var(--sub-color);
+    left: .8rem;
+  }
+
+  table {
+    table-layout: fixed;
+    overflow: auto;
+  }
+  
+  table>tr{
+    position: absolute;
+  }
+
+  td>label {
+    height: 100px;
+    overflow: hidden;
+    white-space: nowrap;
+  }
+
+  td p {
+    font-size: .1vw;
+  }
+
+  td input[type=radio]{
+    cursor: pointer;
+  }
+</style>
+
+<h2>
+  <a class="arrow arrow-left" href="{% url 'piggybox:calendar' month_previous.year month_previous.month %}"></a>
+  {{ month_current | date:"Y年m月" }}
+  <a class="arrow arrow-right" href="{% url 'piggybox:calendar' month_next.year month_next.month %}"></a>
+</h2>
+
+<div id="calendar">
+  <table class="table">
+    <thead>
+      <tr>
+        {% for w in week_names %}
+        <th>{{ w }}</th>
+        {% endfor %}
+      </tr>
+    </thead>
+    <tbody id="SelectedDay">
+      {% for week_day_schedles in month_day_schedules %}
+      <tr>
+        {% for day, schedules in week_day_schedles.items %}
+        {% if now == day %}
+        <td class="table-success">
+        {% else %}
+        <td>
+        {% endif %}
+          <label>
+            {% if month_current.month == day.month %}
+            <input type="radio" name="selected-day" value="{{ day.day }}" onclick="getRadioValue('selected-day');">
+            {{ day.day }}
+            {% endif %}
+
+            {% for schedule in schedules %}
+            {% if schedule.in_out > 0 %}
+            <p style="color:blue">
+              {% else %}
+            <p style="color:red">
+              {% endif %}
+              {{ schedule.in_out }}
+            </p>
+            {% endfor %}
+          </label>
+        </td>
+        {% endfor %}
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</div>
+<a class="btn -S" href="{% url 'piggybox:deal-create' %}">
+  <h2>追加</h2>
+</a>
+
+<script>
+function getRadioValue(name){
+  //ラジオボタンオブジェクトを取得する
+  var radios = document.getElementsByName(name);
+ 
+  //取得したラジオボタンオブジェクトから選択されたものを探し出す
+  var result;
+  for(var i=0; i<radios.length; i++){
+    if (radios[i].checked) {
+      //選択されたラジオボタンのvalue値を取得する
+      result = radios[i].value;
+      break;
+    }
+  }
+ 
+  //value値を表示する
+  alert("value値は" + result + "です");
+}
+</script>
+{% endblock %}

@@ -1,0 +1,14 @@
+{% extends "piggybox/base_generic.html" %}
+
+{% block content %}
+
+<h1>著者の削除</h1>
+
+<p>本当に著者を削除してよろしいですか: {{ author }}？</p>
+
+<form action="" method="POST">
+  {% csrf_token %}
+  <input type="submit" value="はい、削除します。" class="btn">
+</form>
+
+{% endblock %}

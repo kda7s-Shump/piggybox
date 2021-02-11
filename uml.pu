@@ -1,0 +1,59 @@
+@startuml piggybox
+class User{
+  + string username
+  + string email
+  + string password
+}
+
+class Deal{
+  + DateField 日付
+  + int 収支
+  + CATEGORY_LABEL カテゴリー
+  + string 概要
+}
+
+class Wishlist{
+  + string 名称
+  + string URL
+  + int 価格
+  + int 期間
+  + ImageField 画像
+  + DateField 作成日
+  + TextField 備考
+}
+
+class DayDetail{
+  + boolean 今日の分達成
+  + int 今日の貯金額
+  + int 使用した金額
+
+}
+
+class 貯金額{
+  + int 今日の目標貯金額
+  + int 今週の目標貯金額
+  + int 今月の目標貯金額
+}
+
+class Author{
+  + string name
+  + DateField date_of_birth
+  + DateField date_of_death
+  + Book books
+  + string __str__()
+}
+
+class BookInstance{
+  + string uniqueId
+  + DateField due_back
+  + LOAN_STATUS status
+  + Book book
+  + string __str__()
+}
+
+User "1" -- "0..*" Wishlist
+
+Book "1..*" -- "1" Author 
+Book "1" -- "0..*" BookInstance
+
+@enduml

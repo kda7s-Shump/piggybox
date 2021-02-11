@@ -1,0 +1,215 @@
+@import url(//fonts.googleapis.com/css2?family=Kosugi&display=swap&text=0123456789);
+@font-face {
+  font-family: 'Schumpeter';
+  src: url(//fonts.gstatic.com/s/raleway/v14/1Ptug8zYS_SKggPNyC0IT4ttDfA.woff2) format("woff2");
+}
+
+:root {
+  --main-color: #cef7e0;
+  --main-color-dark: #aed7c0;
+  --sub-color: #2e5740;
+  --sub-color-light: #7ec790;
+  --accent-color: #e6abc3;
+}
+
+*,
+*::before,
+*::after {
+  font-family: 'Kosugi', "Schumpeter";
+  list-style: none;
+  -webkit-box-sizing: inherit;
+          box-sizing: inherit;
+}
+
+html {
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+p{
+  color: #363636;
+}
+
+h1{
+  padding-bottom: 10vh;
+}
+
+.btn,
+a.btn,
+input.btn{
+  background-color: var(--sub-color-light);
+  border-radius: 100vh;
+  -webkit-transition: all .5s;
+          transition: all .5s;
+  
+  font-weight: 700;
+  line-height: 1.5;
+  position: relative;
+  display: inline-block;
+  cursor: pointer;
+  color: whitesmoke !important;
+  text-align: center;
+  vertical-align: middle;
+  text-decoration: none;
+  letter-spacing: 0.1em;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+}
+
+
+
+.btn.-XS,
+a.btn.-XS,
+input.btn.-XS{
+  font-size: .8rem;
+  padding: .2rem .8rem;
+}
+
+.btn.-M,
+a.btn.-M,
+input.btn.-M{
+  font-size: 1.6rem;
+  padding: 1rem 4rem;
+}
+
+.btn:hover,
+a.btn:hover,
+input.btn:hover {
+  background: var(--sub-color);
+  border-radius: 100vh;
+}
+
+header,
+main{
+  background-color: #cef7e027;
+}
+
+header{
+  border-bottom: solid .25rem var(--main-color);
+}
+
+header ul,
+footer ul{
+  align-items: center;
+  display: flex;
+  width: 100%;
+}
+
+header ul{
+  height: auto;
+  vertical-align: baseline;
+}
+
+header ul a{
+  text-decoration-style: double;
+}
+
+header ul li:first-child{
+  margin-right: auto;
+}
+
+header nav ul li:not(:first-child){
+  margin-right: 2vw;
+  vertical-align: middle;
+}
+
+main{
+  margin: 0;
+  text-align: center;
+  width: 100vw;
+  padding: 0 0 10vw;
+}
+
+a .signup{
+  background-color: var(--sub-color-light) !important;
+  border: #2e574f !important;
+  border-radius: 10vw;
+}
+
+.font-M {
+  font-size: 3rem;
+}
+
+.font-L {
+  font-size: 12.5vw;
+  margin-bottom: 1%;
+}
+
+.col-md-6{
+  width: 100%;
+}
+
+.form{
+  background-color: white;
+  border: var(--main-color-dark) .1vw solid;
+  border-radius: 10vh;
+  margin: 5vw auto;
+  width: 70vw;
+}
+
+form table{
+  margin: 0 auto;
+}
+
+form input{
+  margin: 2vw auto;
+  padding: 1vw 0;
+  vertical-align: top;
+  width: 50%;
+}
+
+form .form-control{
+  background-color: whitesmoke;
+  width: 50% !important;
+}
+
+footer {
+  background: var(--main-color-dark);
+  bottom: 0;
+  height: 5%;
+}
+
+footer ul{
+  height: 4rem;
+  justify-content: space-evenly;
+}
+
+footer a,
+nav a{
+  color: #363636 !important;
+}
+
+footer p {
+  text-align: center;
+  padding: 1rem;
+}
+
+#langChenge input[type="radio"]{
+  /* 透明度0 */
+  filter: alpha(opacity=0);
+  -moz-opacity:0;
+  opacity:0;
+  /* ブラウザのデフォルトのスタイルを削除 */
+  -webkit-appearance: none;
+  appearance: none;
+  /* レイアウトから無視 */
+  position: absolute;
+}
+
+.color-light{
+  color: var(--main-color);
+}
+.color-midlight{
+  color: var(--main-color-dark);
+}
+.color-middark{
+  color: var(--sub-color-light);
+}
+.color-dark{
+  color: var(--sub-color);
+}
+.color-accent{
+  color: var(--accent-color);
+}

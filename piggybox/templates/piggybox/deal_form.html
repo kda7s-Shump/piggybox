@@ -1,0 +1,15 @@
+{% extends "piggybox/base_generic.html" %}
+
+{% block content %}
+<p style="color:var(--main-color-dark)">piggybox</p>
+
+<div class="form">
+  <form action="" method="post">
+    {% csrf_token %}
+    <table>
+    {{ form.as_table }}
+    </table>
+    <input type="submit" value="登録" class="btn">
+  </form>
+</div>
+{% endblock %}
